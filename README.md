@@ -18,7 +18,7 @@ uv run python 5_compare_systems.py
 ### Step-by-Step Workflow
 ```bash
 # 1. Initial setup and validation
-uv run python 0_setup.py
+uv run python 0_setup.py~~
 
 # 2. Start Neo4j database
 ./start_session.sh
@@ -32,6 +32,23 @@ uv run python 2_data_to_knowledge_graph.py
 # 5. Run complete comparison
 uv run python 5_compare_systems.py
 ```
+
+## Dodanie danych do bazy
+# 1. Skopiuj plik dump do kontenera Neo4j
+docker cp mydump.dump neo4j-graphrag:/var/lib/neo4j/import/
+
+# 2. Zatrzymaj kontener Neo4j
+docker stop neo4j-graphrag
+
+# 3. Wgraj dump do bazy
+docker run --rm \
+  -v 06_graphrag_neo4j_data:/data \
+  -v 06_graphrag_neo4j_import:/var/lib/neo4j/import \
+  neo4j:latest \
+  neo4j-admin load --from=/var/lib/neo4j/import/mydump.dump --database=neo4j --force
+
+# 4. Uruchom kontener ponownie
+docker start neo4j-graphrag
 
 ## 🎯 Problem Addressed
 
