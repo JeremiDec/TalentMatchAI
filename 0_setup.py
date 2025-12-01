@@ -302,13 +302,13 @@ class GraphRAGSetup:
             all_good = False
 
         # Check OpenAI API key
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("AZURE_OPENAI_API_KEY")
         if not api_key:
             print("✗ OPENAI_API_KEY not found")
             print("  Add your API key to .env file")
             all_good = False
         else:
-            print("✓ OpenAI API key found")
+            print("✓ Azure OpenAI API key found")
 
         # Check Docker and Neo4j
         docker_status = check_docker_neo4j()

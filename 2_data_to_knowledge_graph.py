@@ -22,7 +22,7 @@ import toml
 from unstructured.partition.pdf import partition_pdf
 from langchain_core.documents import Document
 from langchain_experimental.graph_transformers import LLMGraphTransformer
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain_neo4j import Neo4jGraph
 
 # Configure logging
@@ -117,10 +117,10 @@ class DataKnowledgeGraphBuilder:
     def setup_llm_transformer(self):
         """Setup LLM and graph transformer with CV-specific schema."""
         # Initialize LLM - using GPT-4o-mini for cost efficiency
-        self.llm = ChatOpenAI(
+        self.llm = AzureChatOpenAI(
             model="gpt-4o-mini",
             temperature=0,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=os.getenv("AZURE_OPENAI_API_KEY")
         )
 
         # Define CV-specific ontology
