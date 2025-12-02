@@ -18,7 +18,7 @@ uv run python 5_compare_systems.py
 ### Step-by-Step Workflow
 ```bash
 # 1. Initial setup and validation
-uv run python 0_setup.py~~
+uv run python 0_setup.py
 
 # 2. Start Neo4j database
 ./start_session.sh
