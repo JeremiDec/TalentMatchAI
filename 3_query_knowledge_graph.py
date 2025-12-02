@@ -16,7 +16,7 @@ from typing import List, Dict, Any
 import logging
 
 from langchain_neo4j import Neo4jGraph, GraphCypherQAChain
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts.prompt import PromptTemplate
 
 # Configure logging
@@ -60,10 +60,10 @@ class CVGraphRAGSystem:
     def setup_qa_chain(self):
         """Setup the GraphCypherQA chain."""
         # Initialize LLM for query generation
-        self.llm = ChatOpenAI(
-            model="gpt-4o",  # Use more powerful model for query generation
+        self.llm = AzureChatOpenAI(
+            model="gpt-4o-mini",  # Use more powerful model for query generation
             temperature=0,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=os.getenv("AZURE_OPENAI_API_KEY")
         )
 
         # Custom Cypher generation prompt with case-insensitive matching
