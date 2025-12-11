@@ -20,6 +20,7 @@ from datetime import datetime
 import logging
 import toml
 import os
+import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -60,7 +61,7 @@ class SystemComparator:
 
             import subprocess
             result = subprocess.run(
-                ["uv", "run", "python", "utils/generate_ground_truth.py"],
+                [sys.executable, "utils/generate_ground_truth.py"],
                 capture_output=True,
                 text=True
             )
@@ -537,7 +538,7 @@ async def main():
 
         # Generate markdown table
         markdown_table = comparator.generate_comparison_table(comparison_data)
-        table_file = Path("results") / "comparison_table.md"
+        table_file = Path("results") / "comparison_table2.md"
         with open(table_file, 'w') as f:
             f.write(markdown_table)
 

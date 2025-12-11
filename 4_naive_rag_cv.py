@@ -21,7 +21,7 @@ import toml
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_openai import AzureOpenAIEmbeddings, AzureChatOpenAI
 from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
@@ -35,18 +35,25 @@ class NaiveRAGSystem:
     """Traditional RAG system using vector similarity search."""
 
     def __init__(self, config_path: str = "utils/config.toml"):
-        """Initialize the Naive RAG system."""
+        """Initialize the Naive RAG system (Azure Version)."""
         self.config = self._load_config(config_path)
 
-        self.embeddings = OpenAIEmbeddings(
-            model="text-embedding-3-small",
-            api_key=os.getenv("OPENAI_API_KEY")
+        # Konfiguracja Azure Embeddings
+        # UWAGA: Upewnij się, że w Azure masz wdrożenie o nazwie "text-embedding-3-small"
+        self.embeddings = AzureOpenAIEmbeddings(
+            azure_deployment="text-embedding-3-small", 
+            openai_api_version="2023-05-15",
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         )
 
-        self.llm = ChatOpenAI(
-            model="gpt-4o",  # Same model as GraphRAG for fair comparison
-            temperature=0,
-            api_key=os.getenv("OPENAI_API_KEY")
+        # Konfiguracja Azure Chat Model
+        self.llm = AzureChatOpenAI(
+            azure_deployment=os.getenv("AZURE_DEPLOYMENT_NAME"),
+            openai_api_version=os.getenv("OPENAI_API_VERSION", "2024-08-01-preview"),
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            temperature=0
         )
 
         self.text_splitter = RecursiveCharacterTextSplitter(
@@ -67,7 +74,7 @@ class NaiveRAGSystem:
         self.retriever = None
         self.rag_chain = None
 
-        logger.info("✓ Naive RAG System initialized")
+        logger.info("✓ Naive RAG System initialized (Azure Mode)")
 
     def _load_config(self, config_path: str) -> dict:
         """Load configuration from TOML file."""

@@ -21,7 +21,6 @@ chroma_*/
 *.chroma
 
 # Results (generated)
-results/*.json
 !results/comparison_report.md
 
 # Data files (generated)

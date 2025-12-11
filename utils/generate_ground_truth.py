@@ -22,7 +22,7 @@ import asyncio
 from pathlib import Path
 from typing import List, Dict, Any
 import logging
-from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.prompts import PromptTemplate
 
@@ -36,10 +36,12 @@ class GroundTruthGenerator:
     def __init__(self, max_cvs: int = 30):
         """Initialize the ground truth generator."""
         # Use GPT-4.1 for performance comparison
-        self.llm = ChatOpenAI(
-            model="gpt-4.1",
-            max_tokens=4096,
-            api_key=os.getenv("OPENAI_API_KEY")
+        self.llm = AzureChatOpenAI(
+            azure_deployment=os.getenv("AZURE_DEPLOYMENT_NAME"),
+            openai_api_version=os.getenv("OPENAI_API_VERSION", "2024-08-01-preview"),
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            temperature=0
         )
 
         # Directories
@@ -173,73 +175,96 @@ Answer (concise, direct):"""
                 "generation_time_seconds": total_time
             }
 
-    def load_test_questions(self) -> Dict[str, Any]:
-        """Load test questions from JSON file."""
-        questions_file = Path(__file__).parent / "test_questions.json"
+    def load_test_questions(self) -> List[Dict[str, Any]]:
+        """Load test questions with robust format handling (List or Dict)."""
+        questions_file = Path("utils/test_questions.json")
+        
+        # Domyślne pytania, jeśli plik nie istnieje
+        default_questions = [
+            {"question": "How many people have Python skills?", "category": "counting", "description": "Simple count"},
+            {"question": "Who worked at Google?", "category": "filtering", "description": "Filter by company"}
+        ]
+
         if not questions_file.exists():
-            raise FileNotFoundError(f"Test questions file not found: {questions_file}")
+            return default_questions
 
         with open(questions_file, 'r') as f:
-            return json.load(f)
+            data = json.load(f)
+
+        # Scenariusz 1: Struktura złożona (test_suite -> categories)
+        if isinstance(data, dict) and "test_suite" in data:
+            all_questions = []
+            for cat_name, cat_data in data["test_suite"]["categories"].items():
+                for q in cat_data["questions"]:
+                    all_questions.append({
+                        "question": q,
+                        "category": cat_name,
+                        "description": cat_data.get("description", "")
+                    })
+            return all_questions
+            
+        # Scenariusz 2: Struktura płaska (Lista pytań)
+        if isinstance(data, list):
+            # Normalizacja listy, upewniamy się że każdy element to słownik
+            normalized = []
+            for item in data:
+                if isinstance(item, str):
+                    normalized.append({"question": item, "category": "general", "description": ""})
+                elif isinstance(item, dict):
+                    normalized.append(item)
+            return normalized
+            
+        return default_questions
 
     async def generate_all_ground_truths(self, max_questions: int = None) -> Dict[str, Any]:
         """Generate ground truth answers for all test questions."""
-        # Load CVs and questions
+        # 1. Wczytaj dane (CV i Pytania)
         all_cv_texts = self.load_all_cvs()
-        test_data = self.load_test_questions()
+        
+        # Teraz ta metoda zawsze zwraca płaską listę, więc nie ma błędu indeksowania
+        all_questions = self.load_test_questions()
 
-        # Extract all questions from all categories
-        all_questions = []
-        for category_name, category_data in test_data["test_suite"]["categories"].items():
-            for question in category_data["questions"]:
-                all_questions.append({
-                    "question": question,
-                    "category": category_name,
-                    "description": category_data["description"]
-                })
-
-        # Limit number of questions if specified
+        # Limit pytań (jeśli podano)
         if max_questions:
             all_questions = all_questions[:max_questions]
-            logger.info(f"Generating ground truth for {len(all_questions)} questions (limited from {len(all_questions)} total)")
-        else:
-            logger.info(f"Generating ground truth for all {len(all_questions)} questions...")
+        
+        logger.info(f"Generating ground truth for {len(all_questions)} questions...")
 
-        # Generate ground truth for each question
+        # 2. Pętla generująca odpowiedzi
         results = []
         for i, question_data in enumerate(all_questions):
-            question = question_data["question"]
-            category = question_data["category"]
+            # Wyciągamy dane pytania bezpiecznie
+            question = question_data.get("question", "")
+            category = question_data.get("category", "general")
+            desc = question_data.get("description", "")
+
+            if not question: continue
 
             logger.info(f"\n[{i+1}/{len(all_questions)}] Processing {category}: {question}")
 
-            # Generate ground truth
+            # Generujemy odpowiedź (wywołanie GPT)
             result = await self.generate_ground_truth_for_question(question, all_cv_texts)
+            
+            # Uzupełniamy metadane
             result["category"] = category
-            result["category_description"] = question_data["description"]
+            result["category_description"] = desc
             result["question_index"] = i + 1
 
             results.append(result)
 
-            # Small delay to respect rate limits
-            await asyncio.sleep(1)
+            # ZABEZPIECZENIE: Pauza 10s dla Azure (Rate Limit)
+            logger.info("   ...sleeping 10s (Azure Rate Limit)...")
+            await asyncio.sleep(10)
 
-        # Compile final results
-        ground_truth_data = {
+        # 3. Zwróć wynik
+        return {
             "metadata": {
-                "generated_by": "GroundTruthGenerator",
-                "model": "gpt-4.1",
-                "num_questions": len(results),
+                "model": "gpt-4o",
                 "num_cvs": len(all_cv_texts),
-                "cv_source_dir": str(self.data_dir),
-                "total_successful": len([r for r in results if r["status"] == "success"]),
-                "total_errors": len([r for r in results if r["status"] == "error"])
+                "total_questions": len(results)
             },
-            "ground_truth_answers": results,
-            "original_test_questions": test_data
+            "ground_truth_answers": results
         }
-
-        return ground_truth_data
 
     def save_ground_truth(self, ground_truth_data: Dict[str, Any]) -> Path:
         """Save ground truth data to JSON file."""
@@ -260,7 +285,7 @@ Answer (concise, direct):"""
         print("Ground Truth Generation Summary")
         print("="*60)
         print(f"Model Used: {metadata['model']}")
-        print(f"Total Questions: {metadata['num_questions']}")
+        print(f"Total Questions: {metadata['total_questions']}")
         print(f"CVs Analyzed: {metadata['num_cvs']}")
         print(f"Successful: {metadata['total_successful']}")
         print(f"Errors: {metadata['total_errors']}")

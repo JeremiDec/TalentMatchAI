@@ -1,0 +1,1416 @@
+{
+  "metadata": {
+    "comparison_date": "2025-12-11T23:08:06.182594",
+    "total_questions": 42,
+    "ground_truth_source": "GPT-5",
+    "systems_compared": [
+      "GraphRAG",
+      "Naive RAG"
+    ]
+  },
+  "results": [
+    {
+      "question_index": 1,
+      "question": "How many people have Python programming skills?",
+      "category": "counting",
+      "ground_truth": "12",
+      "graphrag": {
+        "answer": "There are 139 people with Python programming skills.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWHERE toLower(s.id) = toLower(\"Python\")\nRETURN count(p) AS peopleWithPythonSkills",
+        "execution_time": 1.3836331367492676,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": true,
+          "numerical_accuracy": false,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify the number of people with Python programming skills. Therefore, I cannot determine how many people have those skills based on the information available.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.1197988986968994,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "How many people have worked at Google?",
+      "category": "counting",
+      "ground_truth": "Zero",
+      "graphrag": {
+        "answer": "There are 0 people who have worked at Google.",
+        "cypher_query": "MATCH (p:Person)-[:WORKED_AT]->(c:Company)\nWHERE toLower(c.id) = toLower(\"Google\")\nRETURN count(p) AS peopleWorkedAtGoogle",
+        "execution_time": 1.1699538230895996,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include any specific information about individuals who have worked at Google. Therefore, I cannot determine how many people have worked at Google based on the available information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7493040561676025,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What is the total number of people with AWS certifications?",
+      "category": "counting",
+      "ground_truth": "10",
+      "graphrag": {
+        "answer": "There are 0 people with AWS certifications.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(c:Certification)\nWHERE toLower(c.id) = toLower(\"AWS\")\nRETURN count(p) AS totalPeopleWithAWSCertifications",
+        "execution_time": 1.1539599895477295,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": true,
+          "numerical_accuracy": false,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify the number of people with AWS certifications. Therefore, I cannot determine the total number of individuals with AWS certifications based on the information available.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8846032619476318,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "How many people have Master's degrees?",
+      "category": "counting",
+      "ground_truth": "Zero",
+      "graphrag": {
+        "answer": "There are 0 people who have Master's degrees.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(c:Certification)\nWHERE toLower(c.id) = toLower(\"Master's\")\nRETURN count(p) AS mastersDegreeHolders",
+        "execution_time": 1.9010460376739502,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify the number of people with Master's degrees. Therefore, I cannot determine how many individuals have Master's degrees based on the information available.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6503641605377197,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "How many people are located in San Francisco?",
+      "category": "counting",
+      "ground_truth": "Zero",
+      "graphrag": {
+        "answer": "There are 0 people located in San Francisco.",
+        "cypher_query": "MATCH (p:Person)-[:LOCATED_IN]->(l:Location)\nWHERE toLower(l.id) = toLower(\"San Francisco\")\nRETURN count(p) AS peopleInSanFrancisco",
+        "execution_time": 1.2323756217956543,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include any information about the number of people located in San Francisco. Therefore, I cannot determine this from the available information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8126721382141113,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "How many people have both Docker and Kubernetes skills?",
+      "category": "counting",
+      "ground_truth": "6",
+      "graphrag": {
+        "answer": "There are 40 people who have both Docker and Kubernetes skills.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s1:Skill), (p)-[:HAS_SKILL]->(s2:Skill)\nWHERE toLower(s1.id) = toLower(\"Docker\") AND toLower(s2.id) = toLower(\"Kubernetes\")\nRETURN count(p) AS peopleWithDockerAndKubernetesSkills",
+        "execution_time": 1.6494557857513428,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": true,
+          "numerical_accuracy": false,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify the number of people with both Docker and Kubernetes skills. Therefore, I cannot determine this information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7024359703063965,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "List all people who have both React and Node.js skills",
+      "category": "filtering",
+      "ground_truth": "Thomas Scott, Andrew Butler, Garrett Eaton, Kimberly Smith, Meredith Zimmerman, Joe Wagner, Zachary Huff, Jonathan Weeks, Kaitlin Miller",
+      "graphrag": {
+        "answer": "The following people have both React and Node.js skills:\n\n1. Lisa Wheeler\n2. Michelle Pennington\n3. Richard Best Dvm\n4. Frank Smith\n5. Jeremy Reese\n6. Stephanie Martin\n7. Hayley Phillips\n8. Austin Murray\n9. Justin Rogers\n10. Michael Mullen\n\nIn total, there are 10 individuals with these skills.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s1:Skill), (p)-[:HAS_SKILL]->(s2:Skill)\nWHERE toLower(s1.id) = toLower(\"React\") AND toLower(s2.id) = toLower(\"Node.js\")\nRETURN p.id AS name",
+        "execution_time": 2.887233018875122,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific names of individuals with React and Node.js skills. Therefore, I cannot provide a list of people with both skills.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6789641380310059,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Find all developers with more than 5 years of Python experience",
+      "category": "filtering",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWHERE toLower(s.id) = toLower(\"Python\")\nWITH p, count(s) AS pythonExperience\nWHERE pythonExperience > 5\nRETURN p.id AS developerId",
+        "execution_time": 1.3372952938079834,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the developers with more than 5 years of Python experience based on the provided context, as there is no specific information about the developers' experience or skills in Python.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7905280590057373,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "Show me people who have AWS certifications and work with cloud technologies",
+      "category": "filtering",
+      "ground_truth": "Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Rachel Lindsey, Michael Allen, Devon Kennedy, Jason Ramirez, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(c:Certification), (p)-[:HAS_SKILL]->(t:Technology)\nWHERE toLower(c.id) = toLower(\"AWS\") AND toLower(t.id) CONTAINS toLower(\"cloud\")\nRETURN p.id AS name",
+        "execution_time": 1.5532748699188232,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific names or details about individuals with AWS certifications or their work with cloud technologies. Therefore, I cannot provide a list of people who meet those criteria. If you have specific CVs or additional context, please share that for a more accurate analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.1801769733428955,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "Find all people who studied Computer Science and have industry experience",
+      "category": "filtering",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Charles Silva, Christy Miller, Devon Kennedy, Jason Ramirez, Brittney Peck, Joseph Hill, Melissa Lang, Jonathan Weeks, Joe Peterson, Brittany Ramirez, Maria Ramos, Jeremy Reese, Dennis Pham, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:STUDIED_AT]->(u:University), (p)-[:WORKED_AT]->(c:Company)\nWHERE toLower(u.id) = toLower(\"Computer Science\")\nRETURN p.id AS name",
+        "execution_time": 2.1911842823028564,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify any specific individuals who studied Computer Science and have industry experience, as no names or details about their educational background or work experience are included. If you have specific CVs or additional context to analyze, please provide that information.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.2244019508361816,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "List people who worked at both startups and large companies",
+      "category": "filtering",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:WORKED_AT]->(c1:Company), (p)-[:WORKED_AT]->(c2:Company)\nWHERE c1.id <> c2.id AND (toLower(c1.id) CONTAINS toLower(\"startup\") OR toLower(c2.id) CONTAINS toLower(\"startup\"))\nAND (toLower(c1.id) CONTAINS toLower(\"large\") OR toLower(c2.id) CONTAINS toLower(\"large\"))\nRETURN DISTINCT p.id AS name",
+        "execution_time": 4.384817123413086,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific names of individuals or details about their employment history at startups and large companies. Therefore, I cannot provide a list of people who worked at both types of organizations.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.0612239837646484,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 12,
+      "question": "Find all senior developers with leadership experience",
+      "category": "filtering",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Rachel Lindsey, Zachary Huff, Michael Allen, Cynthia Zuniga, Christy Miller, Jonathan Weeks, Brittany Ramirez, Dennis Pham, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HOLDS_POSITION]->(j:Jobtitle)\nWHERE toLower(j.id) = toLower(\"Senior Developer\")\nRETURN p.id AS name",
+        "execution_time": 1.7237370014190674,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific details about individual CVs or their experiences. Therefore, I cannot identify any senior developers with leadership experience based on the information available.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7233989238739014,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 13,
+      "question": "What is the average years of experience across all candidates?",
+      "category": "aggregation",
+      "ground_truth": "5.2",
+      "graphrag": {
+        "answer": "I don't know the answer to the average years of experience across all candidates, as the information is not available.",
+        "cypher_query": "MATCH (p:Person)\nRETURN avg(p.yearsOfExperience) AS averageYearsOfExperience",
+        "execution_time": 1.106013298034668,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the average years of experience across all candidates as the context provided does not include specific information about the years of experience for each candidate.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8839089870452881,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 14,
+      "question": "What is the most common programming language skill?",
+      "category": "aggregation",
+      "ground_truth": "JavaScript",
+      "graphrag": {
+        "answer": "The most common programming language skill is Machine Learning, with a total of 159 occurrences.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWITH s.id AS skill, count(p) AS skillCount\nORDER BY skillCount DESC\nLIMIT 1\nRETURN skill AS mostCommonProgrammingLanguageSkill, skillCount AS count",
+        "execution_time": 2.0046510696411133,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify any programming language skills or mention which programming languages are included in the CVs. Therefore, I cannot determine the most common programming language skill.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7023441791534424,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 15,
+      "question": "What is the average number of skills per person?",
+      "category": "aggregation",
+      "ground_truth": "8.5",
+      "graphrag": {
+        "answer": "The average number of skills per person is approximately 8.25.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWITH p, count(s) AS skillCount\nRETURN avg(skillCount) AS averageSkillsPerPerson",
+        "execution_time": 1.2555811405181885,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": true,
+          "numerical_accuracy": true,
+          "completeness_score": 0.0,
+          "quality_score": 0.9705882352941176
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the average number of skills per person as the context provided does not include specific information about the number of skills listed for each individual.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.9616389274597168,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 16,
+      "question": "Which city has the most candidates?",
+      "category": "aggregation",
+      "ground_truth": "Port Vincent",
+      "graphrag": {
+        "answer": "The city with the most candidates is South David, which has a total of 2 candidates.",
+        "cypher_query": "MATCH (p:Person)-[:LOCATED_IN]->(l:Location)\nRETURN l.id AS city, count(p) AS candidateCount\nORDER BY candidateCount DESC\nLIMIT 1",
+        "execution_time": 4.775410890579224,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include information about the cities of the candidates, so I cannot determine which city has the most candidates.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.121840238571167,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 17,
+      "question": "What percentage of people have cloud certifications?",
+      "category": "aggregation",
+      "ground_truth": "30",
+      "graphrag": {
+        "answer": "Error: {code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'count': expected an expression (line 3, column 42 (offset: 126))\n\"WITH count(p) AS cloudCertified, (SELECT count(*) FROM Person) AS totalPeople\"\n                                          ^}",
+        "cypher_query": "",
+        "execution_time": 1.2833809852600098,
+        "success": false,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": true,
+          "numerical_accuracy": false,
+          "completeness_score": 0.0,
+          "quality_score": 0.09999999999999998
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific information about the number of people with cloud certifications. Therefore, I cannot determine the percentage of people with cloud certifications based on the available information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8357670307159424,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 18,
+      "question": "What is the most frequently mentioned company?",
+      "category": "aggregation",
+      "ground_truth": "Tech Innovations Inc.",
+      "graphrag": {
+        "answer": "The most frequently mentioned company is Tech Innovations Inc., with a total of 348 mentions.",
+        "cypher_query": "MATCH (d:Document)-[:MENTIONS]->(c:Company)\nRETURN c.id AS company, count(d) AS mentionCount\nORDER BY mentionCount DESC\nLIMIT 1",
+        "execution_time": 1.7055342197418213,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the most frequently mentioned company as the context provided does not include specific company names or mentions.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.5804221630096436,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 19,
+      "question": "Who are the top 3 most experienced developers?",
+      "category": "sorting",
+      "ground_truth": "Jonathan Weeks, Jason Ramirez, Zachary Huff",
+      "graphrag": {
+        "answer": "The top 3 most experienced developers are Michelle Chapman, John Mitchell, and Stephanie Chavez, each with 3 years of experience.",
+        "cypher_query": "MATCH (p:Person)-[:HOLDS_POSITION]->(j:Jobtitle)\nRETURN p.id AS name, count(j) AS experience\nORDER BY experience DESC\nLIMIT 3",
+        "execution_time": 1.262660264968872,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the top 3 most experienced developers as the context provided does not include specific information about the developers' experience levels or details about their work history.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8205130100250244,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 20,
+      "question": "List the 5 people with the most programming languages",
+      "category": "sorting",
+      "ground_truth": "Cynthia Zuniga, Devon Kennedy, Zachary Huff, Jonathan Weeks, Michael Allen",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWHERE toLower(s.id) CONTAINS toLower(\"programming language\")\nWITH p, count(s) AS programmingLanguageCount\nORDER BY programmingLanguageCount DESC\nLIMIT 5\nRETURN p.id AS name, programmingLanguageCount AS numberOfProgrammingLanguages",
+        "execution_time": 1.9180221557617188,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the names of individuals or the specific number of programming languages they know based on the provided context, as it does not include any details about individuals or their programming skills.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7878670692443848,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 21,
+      "question": "Rank all candidates by their number of certifications",
+      "category": "sorting",
+      "ground_truth": "1. Jonathan Weeks\n2. Zachary Huff\n3. Devon Kennedy\n4. Cynthia Zuniga\n5. Michael Allen\n6. Kimberly Smith\n7. Rachel Lindsey\n8. Joe Wagner\n9. Thomas Scott\n10. Angela Wilson\n11. Wendy Mays\n12. Joe Peterson\n13. Brittany Ramirez\n14. Jason Ramirez\n15. Meredith Zimmerman\n16. Christy Miller\n17. Alexander Campbell\n18. Kaitlin Miller\n19. Andrew Butler\n20. Melissa Lang\n21. Garrett Eaton\n22. Sandra Garcia\n23. Thomas Scott\n24. Joe Peterson\n25. Jason Ramirez\n26. Devon Kennedy\n27. Zachary Huff\n28. Kimberly Smith\n29. Rachel Lindsey\n30. Michael Allen",
+      "graphrag": {
+        "answer": "Here are the candidates ranked by their number of certifications:\n\n1. **Rebecca Murray** - 5 certifications\n2. **Tammy Porter** - 4 certifications\n3. **Douglas Pacheco** - 4 certifications\n4. **Isaiah Duncan** - 4 certifications\n5. **Laura Bowen** - 4 certifications\n6. **Lisa Dunn** - 3 certifications\n7. **Nicole Garcia** - 3 certifications\n8. **Chase Stone** - 3 certifications\n9. **Christy Miller** - 3 certifications\n10. **Christopher Palmer** - 3 certifications\n\nRebecca Murray has the highest number of certifications, while several candidates are tied with 3 certifications.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(c:Certification)\nRETURN p.id AS candidate, count(c) AS certificationCount\nORDER BY certificationCount DESC",
+        "execution_time": 3.8208181858062744,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.14084507042253522,
+          "quality_score": 0.14084507042253522
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the number of certifications for each candidate as the context provided does not include specific details about the candidates or their certifications. Please provide the relevant information for analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6877219676971436,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 22,
+      "question": "Who has the most diverse skill set?",
+      "category": "sorting",
+      "ground_truth": "Cynthia Zuniga, Thomas Scott, and Andrew Butler.",
+      "graphrag": {
+        "answer": "Anne Kim has the most diverse skill set, with a total of 12 different skills.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill)\nWITH p, count(s) AS skillCount\nORDER BY skillCount DESC\nLIMIT 1\nRETURN p.id AS personId, skillCount AS diverseSkillSetCount",
+        "execution_time": 1.530590295791626,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine who has the most diverse skill set as the context provided does not include specific details about the skills of individuals in the CVs.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8022191524505615,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 23,
+      "question": "List people in order of their career progression",
+      "category": "sorting",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Charles Silva, Christy Miller, Devon Kennedy, Jason Ramirez, Brittney Peck, Joseph Hill, Melissa Lang, Jonathan Weeks, Joe Peterson, Brittany Ramirez, Maria Ramos, Jeremy Reese, Dennis Pham, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "Based on the information provided, here is a list of people ordered by their likely career progression:\n\n1. **Jonathan Lozano** - Data Science Intern\n2. **Mike Taylor** - Data Analyst\n3. **Richard Wood** - Database Developer\n4. **Willie Hoffman** - Devops Engineer\n5. **Martin Melendez** - Data Scientist\n6. **Ronald Walsh** - Data Scientist\n7. **Natalie Lee** - Data Scientist\n8. **Jonathan Watts** - Data Scientist\n9. **Paul Ibarra** - Data Scientist\n10. **Kyle Holden** - Data Scientist\n\nThis order reflects a typical progression from intern to analyst, followed by specialized roles in data science and related fields.",
+        "cypher_query": "MATCH (p:Person)-[:HOLDS_POSITION]->(j:Jobtitle)\nRETURN p.id AS name, j.id AS jobtitle\nORDER BY j.id",
+        "execution_time": 2.4565420150756836,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I'm unable to provide a list of people in order of their career progression as the context does not include specific names or details about their career paths. If you can provide more information or context, I would be happy to assist!",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7498466968536377,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 24,
+      "question": "Which candidates have the most company experience?",
+      "category": "sorting",
+      "ground_truth": "Jonathan Weeks, Zachary Huff, Devon Kennedy, Michael Allen, and Cynthia Zuniga.",
+      "graphrag": {
+        "answer": "The candidate with the most company experience is Rebecca Murray, who has 5 years of experience. The following candidates each have 3 years of company experience: Jeremy Wilson, Grace Russell, Lisa Martin, Ricardo Medina, Anthony Flores, Benjamin Mckenzie, Stephen Miller, Tina Phillips, and Jonathan Williams.",
+        "cypher_query": "MATCH (p:Person)-[:WORKED_AT]->(c:Company)\nRETURN p.id AS candidate, count(c) AS companyExperience\nORDER BY companyExperience DESC",
+        "execution_time": 1.4825029373168945,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.18181818181818182,
+          "quality_score": 0.18181818181818182
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine which candidates have the most company experience as the context provided does not include specific details about the candidates' work history or the duration of their experience at various companies.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6760838031768799,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 25,
+      "question": "Find all pairs of people who attended the same university",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Port Vincent: Sandra Garcia, Thomas Scott  \nSheppardtown: Thomas Scott, Andrew Butler  \nAdamsland: Andrew Butler, Rachel Lindsey  \nFloresburgh: Garrett Eaton, Wendy Mays  \nRosschester: Wendy Mays, Zachary Huff  \nHawkinsstad: Rachel Lindsey, Jason Ramirez  \nPort Jasonmouth: Zachary Huff, Maria Ramos  \nJustinberg: Christy Miller, Kaitlin Miller  \nAaronside: Joseph Hill, Jonathan Weeks  \nMarybury: Melissa Lang, Brittany Ramirez  \nMichellemouth: Maria Ramos, Devon Kennedy  \nDeleonside: Jeremy Reese, Devon Kennedy  \nNorth Sydney: John Taylor, Kaitlin Miller  \nSanchezport: Cynthia Zuniga, Devon Kennedy  \nRhondamouth: Brittney Peck, John Taylor  \nMichellefurt: Michael Allen, John Taylor  \nReedburgh: Jonathan Weeks, Jason Ramirez  \nPort Amandaton: Jason Ramirez, Kaitlin Miller  \nPort Nicolehaven: Kaitlin Miller, John Taylor",
+      "graphrag": {
+        "answer": "There are 10 pairs of people who attended the same university with Anthony Sullivan Md. The pairs are:\n\n1. Anthony Sullivan Md and Zachary Huff\n2. Anthony Sullivan Md and Michael Wright\n3. Anthony Sullivan Md and Stephanie Bradley\n4. Anthony Sullivan Md and Robert Pineda\n5. Anthony Sullivan Md and Sarah Colon\n6. Anthony Sullivan Md and Brian Kent\n7. Anthony Sullivan Md and Kevin Conway\n8. Anthony Sullivan Md and Jennifer Conner\n9. Anthony Sullivan Md and Melissa Johnson\n10. Anthony Sullivan Md and Cory Cox Iv",
+        "cypher_query": "MATCH (p1:Person)-[:STUDIED_AT]->(u:University)<-[:STUDIED_AT]-(p2:Person)\nWHERE p1.id <> p2.id\nRETURN p1.id AS person1, p2.id AS person2",
+        "execution_time": 3.117924213409424,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.056338028169014086,
+          "quality_score": 0.056338028169014086
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine any pairs of people who attended the same university based on the provided context, as there is no information about individuals or their educational backgrounds.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6465010643005371,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 26,
+      "question": "Which people have worked at the same companies?",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Charles Silva, Christy Miller, Devon Kennedy, Jason Ramirez, Brittney Peck, Joseph Hill, Melissa Lang, Jonathan Weeks, Joe Peterson, Brittany Ramirez, Maria Ramos, Jeremy Reese, Dennis Pham, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "Adam Fowler has worked at Tech Innovations Inc. with the following individuals: \n\n1. Laura Ramirez\n2. Veronica Cobb\n3. Oscar Stone\n4. Ethan Collins\n5. Michael Rivera\n6. Donna Barker\n7. Kathy Erickson\n8. Kenneth Price\n9. Kristin Wu\n10. Alexander Smith\n\nIn total, Adam Fowler has collaborated with 10 different people at Tech Innovations Inc.",
+        "cypher_query": "MATCH (p1:Person)-[:WORKED_AT]->(c:Company)<-[:WORKED_AT]-(p2:Person)\nWHERE p1.id <> p2.id\nRETURN p1.id AS person1, p2.id AS person2, c.id AS company",
+        "execution_time": 4.719851016998291,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.03571428571428571,
+          "quality_score": 0.03571428571428571
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine which people have worked at the same companies based on the provided context, as there is no specific information about individuals or their employment history included.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.8279809951782227,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 27,
+      "question": "Find developers who have complementary skills for a full-stack team",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Wendy Mays, Kimberly Smith, Rachel Lindsey, Jason Ramirez, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s1:Skill), (p)-[:HAS_SKILL]->(s2:Skill)\nWHERE toLower(s1.id) IN [toLower(\"Frontend\"), toLower(\"Backend\")] AND toLower(s2.id) IN [toLower(\"Database\"), toLower(\"DevOps\")]\nRETURN DISTINCT p.id AS developerId",
+        "execution_time": 2.026772975921631,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify specific developers or their skills since no individual CVs or skill sets have been shared. If you provide details about the developers' skills or the specific technologies they are proficient in, I can help identify complementary skills for a full-stack team.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.1860229969024658,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 28,
+      "question": "Identify people who could mentor others based on shared skills",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Kimberly Smith, Rachel Lindsey, Zachary Huff, Christy Miller, Jonathan Weeks, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "There are 10 mentors who could mentor others based on their shared skill in C++. The mentors are:\n\n1. Adam Fowler\n2. Ana Roberts\n3. Andrea Odom\n4. Angela Wilson\n5. Anne Kim\n6. Anthony Freeman\n7. Anthony Payne\n8. Anthony Sullivan Md\n9. Austin Murray\n10. Benjamin Mckenzie\n\nAll of these individuals have shared their expertise in C++ with their mentee, Martin Anthony.",
+        "cypher_query": "MATCH (p1:Person)-[:HAS_SKILL]->(s:Skill)<-[:HAS_SKILL]-(p2:Person)\nWHERE p1.id <> p2.id\nRETURN p1.id AS mentor, p2.id AS mentee, s.id AS sharedSkill",
+        "execution_time": 10.360008955001831,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine specific individuals who could mentor others based on shared skills, as the provided context does not include any names or specific skills associated with individuals. If you have specific CVs or details about individuals and their skills, please provide that information for a more accurate analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.1585609912872314,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 29,
+      "question": "Find all connections between people through shared employers",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Tech Innovations Inc.: Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Christy Miller, Cynthia Zuniga, Michael Allen, Devon Kennedy, Jeremy Reese, Kaitlin Miller, Jonathan Weeks, Brittany Ramirez, Maria Ramos, Joe Peterson, Dennis Pham.",
+      "graphrag": {
+        "answer": "There are 10 connections involving Adam Fowler at Tech Innovations Inc. The individuals he is connected to are:\n\n1. Laura Ramirez\n2. Veronica Cobb\n3. Oscar Stone\n4. Ethan Collins\n5. Michael Rivera\n6. Donna Barker\n7. Kathy Erickson\n8. Kenneth Price\n9. Kristin Wu\n10. Alexander Smith\n\nThese connections indicate that Adam Fowler shares the same employer, Tech Innovations Inc., with each of these individuals.",
+        "cypher_query": "MATCH (p1:Person)-[:WORKED_AT]->(c:Company)<-[:WORKED_AT]-(p2:Person)\nWHERE p1.id <> p2.id\nRETURN p1.id AS person1, p2.id AS person2, c.id AS company",
+        "execution_time": 8.418105125427246,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0851063829787234,
+          "quality_score": 0.0851063829787234
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine any connections between people through shared employers as the provided context does not include specific names or details about employers. Please provide more information for analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.921576976776123,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 30,
+      "question": "Which people have similar career paths?",
+      "category": "multi_hop_reasoning",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Charles Silva, Christy Miller, Devon Kennedy, Jason Ramirez, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "There are 10 people who have similar career paths with Martin Anthony at Tech Innovations Ltd. They are:\n\n1. Jeffrey Graham\n2. Rhonda Baker\n3. Jared Martin\n4. Rebecca Murray\n5. Alexander Campbell\n6. Shannon May\n7. John Taylor\n8. Carlos Santiago\n9. Jeremy Wilson\n10. Grace Russell\n\nThese individuals are all associated with Martin Anthony in their professional journeys at the company.",
+        "cypher_query": "MATCH (p1:Person)-[:WORKED_AT]->(c:Company)<-[:WORKED_AT]-(p2:Person)\nWHERE p1 <> p2\nRETURN p1.id AS person1, p2.id AS person2, c.id AS company",
+        "execution_time": 5.6900269985198975,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine which people have similar career paths based on the provided context, as there is no specific information about individuals or their career trajectories included in the context.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.152796983718872,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 31,
+      "question": "Who graduated most recently?",
+      "category": "temporal_reasoning",
+      "ground_truth": "Kaitlin Miller",
+      "graphrag": {
+        "answer": "The most recent graduate is Joshua Baker from Wrightborough University.",
+        "cypher_query": "MATCH (p:Person)-[:STUDIED_AT]->(u:University)\nRETURN p.id AS name, u.id AS university\nORDER BY u.id DESC\nLIMIT 1",
+        "execution_time": 1.2008271217346191,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine who graduated most recently as the context provided does not include any graduation dates or information about the educational backgrounds of the individuals.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6944248676300049,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 32,
+      "question": "Find people who started their careers in the same year",
+      "category": "temporal_reasoning",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Wendy Mays, Alex Campbell, Kimberly Smith, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Devon Kennedy, Jason Ramirez, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "There are 10 records of individuals who have a Bachelor of Science in Computer Science and are associated with each other. The individuals are:\n\n1. Curtis Henry\n2. Douglas Pacheco\n3. Lisa Oconnell\n4. Laura Bowen\n5. Erin Arnold\n6. Tammy Porter\n7. Isaiah Duncan\n\nEach of these individuals is connected to Douglas Pacheco, and Curtis Henry is also connected to several of them. However, the information does not specify the years they started their careers, so I don't know the answer to your question about who started their careers in the same year.",
+        "cypher_query": "MATCH (p1:Person)-[:EARNED]->(j1:Jobtitle), (p2:Person)-[:EARNED]->(j2:Jobtitle)\nWHERE p1 <> p2 AND j1.id = j2.id\nRETURN p1.id AS person1, p2.id AS person2, j1.id AS jobtitle",
+        "execution_time": 2.6532979011535645,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the specific years when individuals started their careers based on the provided context, as no information regarding the start years of their careers is available.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.0507049560546875,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 33,
+      "question": "Which certifications were obtained in the last 2 years?",
+      "category": "temporal_reasoning",
+      "ground_truth": "Certified Kubernetes Administrator, AWS Certified Solutions Architect, Microsoft Azure Developer, Google Cloud Professional, Scrum Master Certification.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(c:Certification)\nWHERE c.issuedDate >= date().year - 2\nRETURN c.id AS certificationId, p.id AS personId",
+        "execution_time": 1.185011386871338,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not specify any certifications or their dates of acquisition. Therefore, I cannot determine which certifications were obtained in the last 2 years.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.6971800327301025,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 34,
+      "question": "Who has the longest tenure at a single company?",
+      "category": "temporal_reasoning",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "The individual with the longest tenure at a single company is Martin Anthony, who has been with Tech Innovations Ltd. for 1 year.",
+        "cypher_query": "MATCH (p:Person)-[:WORKED_AT]->(c:Company)\nWITH p, c, count(p) AS tenure\nRETURN p.id AS name, c.id AS company, tenure AS tenureAtCompany\nORDER BY tenure DESC\nLIMIT 1",
+        "execution_time": 1.6653330326080322,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific details about the tenures of individuals at their respective companies. Therefore, I cannot determine who has the longest tenure at a single company based on the information available.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.3844377994537354,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 35,
+      "question": "Find people who changed careers after 2020",
+      "category": "temporal_reasoning",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:EARNED]->(j:Jobtitle)\nWHERE j.id CONTAINS \"2020\"\nRETURN p.id AS name",
+        "execution_time": 0.9864339828491211,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The provided context does not include specific information about individuals who changed careers after 2020. Therefore, I cannot determine who made such changes based on the available information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7830100059509277,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 36,
+      "question": "Which candidates have the most recent work experience?",
+      "category": "temporal_reasoning",
+      "ground_truth": "Zachary Huff, Devon Kennedy, Kaitlin Miller, Dennis Pham, Brittany Ramirez, Jonathan Weeks, Michael Allen, Cynthia Zuniga, Christy Miller, Angela Wilson, Meredith Zimmerman, Kimberly Smith, Thomas Scott, Sandra Garcia.",
+      "graphrag": {
+        "answer": "The candidates with the most recent work experience and their respective companies are as follows:\n\n1. Bryan Mitchell - Xyz Tech Solutions\n2. Connor Wilson - Webstart Co.\n3. Laura Ramirez - Webcraft Studios\n4. Bonnie Bridges - Web Solutions Ltd.\n5. Megan Miller - Web Solutions Ltd.\n6. David Gibbs - Web Solutions Ltd.\n7. Jennifer Nelson - Web Solutions Ltd.\n8. Cynthia Zuniga - Web Solutions Ltd.\n9. Veronica Cobb - Web Solutions Llc\n10. Melissa Perez - Web Solutions Llc\n\nIn total, there are 10 candidates listed.",
+        "cypher_query": "MATCH (p:Person)-[:WORKED_AT]->(c:Company)\nRETURN p.id AS candidate, max(c.id) AS mostRecentCompany\nORDER BY mostRecentCompany DESC",
+        "execution_time": 1.9987878799438477,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.037037037037037035,
+          "quality_score": 0.037037037037037035
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine which candidates have the most recent work experience as the context provided does not include specific details about the candidates' work experience or dates of employment.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7609169483184814,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 37,
+      "question": "Find Python developers with AWS certifications who studied at top universities",
+      "category": "complex_combinations",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill), (p)-[:EARNED]->(c:Certification), (p)-[:STUDIED_AT]->(u:University)\nWHERE toLower(s.id) = toLower(\"Python\") AND toLower(c.id) = toLower(\"AWS\")\nRETURN p.id AS name, u.id AS university",
+        "execution_time": 1.4550306797027588,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify specific Python developers with AWS certifications or their educational backgrounds, as no details about individuals, their skills, certifications, or universities are included. Therefore, I cannot provide a list or any specific names.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.9542710781097412,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 38,
+      "question": "List all senior developers with both frontend and backend skills",
+      "category": "complex_combinations",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Kimberly Smith, Rachel Lindsey, Zachary Huff, Michael Allen, Christy Miller, Jonathan Weeks, Kaitlin Miller",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s1:Skill), (p)-[:HAS_SKILL]->(s2:Skill)\nWHERE toLower(s1.id) = toLower(\"frontend\") AND toLower(s2.id) = toLower(\"backend\") \nAND EXISTS((p)-[:HOLDS_POSITION]->(:Jobtitle {id: \"Senior Developer\"}))\nRETURN p.id AS name",
+        "execution_time": 1.2874081134796143,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "The context provided does not include specific names or details about senior developers with both frontend and backend skills. Therefore, I cannot provide a list based on the available information.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.782322883605957,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 39,
+      "question": "Find people with machine learning skills who worked at tech companies",
+      "category": "complex_combinations",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Rachel Lindsey, Christy Miller, Michael Allen, Cynthia Zuniga, Devon Kennedy, Jonathan Weeks, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "The information provided does not specify any individuals with machine learning skills or their employment at tech companies. Therefore, I don't know the answer to your question.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill), (p)-[:WORKED_AT]->(c:Company)\nWHERE toLower(s.id) = toLower(\"machine learning\") AND toLower(c.id) CONTAINS toLower(\"tech\")\nRETURN p.id AS name",
+        "execution_time": 1.414001226425171,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify specific individuals with machine learning skills who worked at tech companies, as no names, companies, or skills are mentioned in the context. If you have specific CVs or additional details, please provide them for further analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 1.022778034210205,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 40,
+      "question": "Identify candidates with both technical skills and business experience",
+      "category": "complex_combinations",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Kimberly Smith, Meredith Zimmerman, Victoria Baker, Joe Wagner, Rachel Lindsey, Zachary Huff, Angela Wilson, Michael Allen, Cynthia Zuniga, Charles Silva, Christy Miller, Devon Kennedy, Jason Ramirez, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "There are 10 candidates who possess both technical skills and business experience. Here are their names:\n\n1. Martin Anthony\n2. Jeffrey Graham\n3. Rhonda Baker\n4. Jared Martin\n5. Rebecca Murray\n6. Alexander Campbell\n7. Shannon May\n8. John Taylor\n9. Carlos Santiago\n10. Jeremy Wilson\n\nEach of these candidates has a diverse set of technical skills and has worked at various companies, showcasing their experience in the industry.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill), (p)-[:WORKED_AT]->(c:Company)\nRETURN p.id AS candidateId, collect(s.id) AS technicalSkills, collect(c.id) AS companiesWorkedAt",
+        "execution_time": 2.1630148887634277,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify specific candidates with both technical skills and business experience, as no candidate details or their respective skills and experiences are provided. If you have specific CVs or details to analyze, please share them for a more accurate assessment.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.7379751205444336,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 41,
+      "question": "Find full-stack developers with startup experience and advanced degrees",
+      "category": "complex_combinations",
+      "ground_truth": "None",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill), (p)-[:WORKED_AT]->(c:Company), (p)-[:STUDIED_AT]->(u:University)\nWHERE toLower(s.id) = toLower(\"full-stack developer\") AND toLower(c.id) CONTAINS toLower(\"startup\") AND toLower(u.id) CONTAINS toLower(\"advanced degree\")\nRETURN p.id AS name",
+        "execution_time": 2.1805620193481445,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "Based on the provided context, I cannot identify specific full-stack developers with startup experience and advanced degrees, as there are no details or names mentioned in the context. If you have specific CVs or additional information, please provide that for a more accurate analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.9451498985290527,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 42,
+      "question": "List all candidates suitable for a DevOps role based on their skills and experience",
+      "category": "complex_combinations",
+      "ground_truth": "Sandra Garcia, Thomas Scott, Andrew Butler, Garrett Eaton, Wendy Mays, Alexander Campbell, Kimberly Smith, Meredith Zimmerman, Joe Wagner, Rachel Lindsey, Zachary Huff, Michael Allen, Cynthia Zuniga, Charles Silva, Brittany Ramirez, Devon Kennedy, Jonathan Weeks, Kaitlin Miller.",
+      "graphrag": {
+        "answer": "I don't know the answer.",
+        "cypher_query": "MATCH (p:Person)-[:HAS_SKILL]->(s:Skill), (p)-[:HOLDS_POSITION]->(j:Jobtitle)\nWHERE toLower(j.id) = toLower(\"DevOps\")\nRETURN p.id AS candidateId, collect(s.id) AS skills, j.id AS jobtitle",
+        "execution_time": 1.3135530948638916,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      },
+      "naive_rag": {
+        "answer": "I cannot determine the candidates suitable for a DevOps role based on the provided context, as there is no specific information about candidates, their skills, or their experience related to DevOps. Please provide the relevant details for analysis.",
+        "chunks_retrieved": 0,
+        "execution_time": 0.862980842590332,
+        "success": true,
+        "evaluation": {
+          "exact_match": false,
+          "contains_key_info": false,
+          "numerical_accuracy": null,
+          "completeness_score": 0.0,
+          "quality_score": 0.0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "overall_performance": {
+      "graphrag_wins": 8,
+      "naive_rag_wins": 0,
+      "ties": 34,
+      "graphrag_win_rate": 0.19047619047619047,
+      "naive_rag_win_rate": 0.0
+    },
+    "quality_scores": {
+      "graphrag_avg": 0.038272552891283215,
+      "naive_rag_avg": 0.0,
+      "graphrag_median": 0.0,
+      "naive_rag_median": 0.0
+    },
+    "category_breakdown": {
+      "counting": {
+        "total": 6,
+        "graph_wins": 0,
+        "naive_wins": 0,
+        "ties": 6
+      },
+      "filtering": {
+        "total": 6,
+        "graph_wins": 0,
+        "naive_wins": 0,
+        "ties": 6
+      },
+      "aggregation": {
+        "total": 6,
+        "graph_wins": 2,
+        "naive_wins": 0,
+        "ties": 4
+      },
+      "sorting": {
+        "total": 6,
+        "graph_wins": 2,
+        "naive_wins": 0,
+        "ties": 4
+      },
+      "multi_hop_reasoning": {
+        "total": 6,
+        "graph_wins": 3,
+        "naive_wins": 0,
+        "ties": 3
+      },
+      "temporal_reasoning": {
+        "total": 6,
+        "graph_wins": 1,
+        "naive_wins": 0,
+        "ties": 5
+      },
+      "complex_combinations": {
+        "total": 6,
+        "graph_wins": 0,
+        "naive_wins": 0,
+        "ties": 6
+      }
+    }
+  }
+}

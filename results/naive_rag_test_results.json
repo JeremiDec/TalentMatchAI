@@ -1,0 +1,60 @@
+{
+  "test_metadata": {
+    "system_type": "naive_rag",
+    "test_queries": 5,
+    "database_stats": {
+      "total_chunks": 0,
+      "sample_source_files": [],
+      "embedding_model": "text-embedding-3-small",
+      "chunk_size": 1000,
+      "chunk_overlap": 200
+    }
+  },
+  "results": [
+    {
+      "query": "How many people have Python skills?",
+      "answer": "The context provided does not specify the number of people with Python skills. Therefore, I cannot determine how many individuals possess this skill based on the available information.",
+      "source_type": "naive_rag",
+      "execution_time": 0.6349489688873291,
+      "num_chunks_retrieved": 0,
+      "context_info": [],
+      "success": true
+    },
+    {
+      "query": "List people with AWS certifications",
+      "answer": "The context provided does not include any specific names of individuals with AWS certifications. Therefore, I cannot provide a list of people with AWS certifications based on the available information.",
+      "source_type": "naive_rag",
+      "execution_time": 0.7022006511688232,
+      "num_chunks_retrieved": 0,
+      "context_info": [],
+      "success": true
+    },
+    {
+      "query": "What is the most common programming language?",
+      "answer": "The context provided does not specify any programming languages or their usage frequency. Therefore, I cannot determine the most common programming language based on the information available.",
+      "source_type": "naive_rag",
+      "execution_time": 0.6660120487213135,
+      "num_chunks_retrieved": 0,
+      "context_info": [],
+      "success": true
+    },
+    {
+      "query": "Who worked at Google?",
+      "answer": "The context provided does not specify any individuals who worked at Google. Therefore, I cannot determine who worked at Google based on the information available.",
+      "source_type": "naive_rag",
+      "execution_time": 0.6364800930023193,
+      "num_chunks_retrieved": 0,
+      "context_info": [],
+      "success": true
+    },
+    {
+      "query": "Find people with both React and Node.js skills",
+      "answer": "The context provided does not include specific names or details about individuals with React and Node.js skills. Therefore, I cannot identify any people with both skills based on the information available.",
+      "source_type": "naive_rag",
+      "execution_time": 0.6969468593597412,
+      "num_chunks_retrieved": 0,
+      "context_info": [],
+      "success": true
+    }
+  ]
+}

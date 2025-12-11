@@ -19,7 +19,7 @@ import logging
 from pathlib import Path
 import toml
 
-from unstructured.partition.pdf import partition_pdf
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.documents import Document
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_openai import AzureChatOpenAI
@@ -118,9 +118,12 @@ class DataKnowledgeGraphBuilder:
         """Setup LLM and graph transformer with CV-specific schema."""
         # Initialize LLM - using GPT-4o-mini for cost efficiency
         self.llm = AzureChatOpenAI(
-            model="gpt-4o-mini",
-            temperature=0,
-            api_key=os.getenv("AZURE_OPENAI_API_KEY")
+            azure_deployment=os.getenv("AZURE_DEPLOYMENT_NAME"),
+            # ZMIANA: Czytamy z .env zamiast wpisywać stringa
+            openai_api_version=os.getenv("OPENAI_API_VERSION"), 
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            temperature=0
         )
 
         # Define CV-specific ontology
@@ -159,24 +162,15 @@ class DataKnowledgeGraphBuilder:
         logger.info("✓ LLM Graph Transformer initialized with CV schema")
 
     def extract_text_from_pdf(self, pdf_path: str) -> str:
-        """Extract text content from PDF using unstructured.
-
-        Args:
-            pdf_path: Path to the PDF file
-
-        Returns:
-            str: Extracted text content
-        """
+        """Extract text content from PDF using PyPDFLoader (Reliable pure-Python method)."""
         try:
-            # Use unstructured to parse PDF
-            elements = partition_pdf(filename=pdf_path)
-
-            # Combine all text elements into single document
-            # This is crucial - processing as single document maintains context
-            full_text = "\n\n".join([str(element) for element in elements])
-
-            logger.debug(f"Extracted {len(full_text)} characters from {pdf_path}")
-            return full_text
+            # ZMIANA: Używamy PyPDFLoader zamiast unstructured
+            loader = PyPDFLoader(pdf_path)
+            pages = loader.load()
+            
+            # Łączenie tekstu ze wszystkich stron
+            full_text = "\n\n".join([page.page_content for page in pages])
+            return full_text.strip()
 
         except Exception as e:
             logger.error(f"Failed to extract text from {pdf_path}: {e}")

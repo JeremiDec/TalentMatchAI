@@ -11,7 +11,7 @@
 
 [generation]
 # Number of programmer profiles to generate
-num_programmers = 425
+num_programmers = 0
 
 # Number of project records to generate
 num_projects = 0
