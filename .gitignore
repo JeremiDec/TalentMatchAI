@@ -24,7 +24,6 @@ chroma_*/
 !results/comparison_report.md
 
 # Data files (generated)
-data/programmers/*.pdf
 
 # OS
 .DS_Store
