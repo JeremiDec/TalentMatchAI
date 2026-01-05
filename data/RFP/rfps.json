@@ -1,55 +1,22 @@
 [
   {
     "id": "RFP-001",
-    "title": "Mobile App Development",
+    "title": "Data Analytics Platform",
     "client": "Retail Solutions Ltd",
     "description": "Strategic initiative for API Integration Platform.",
     "project_type": "Software Development",
-    "duration_months": 11,
-    "team_size": 12,
+    "duration_months": 9,
+    "team_size": 11,
     "budget_range": "$1M - $2M",
-    "start_date": "2026-01-04",
+    "start_date": "2026-01-05",
+    "deadline": "2026-10-02",
     "requirements": [
       {
         "skill_name": "React",
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Angular",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Python",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Docker",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Kubernetes",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Node.js",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
+        "required_count": 2,
         "preferred_certifications": []
       },
       {
@@ -57,163 +24,55 @@
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
+        "required_count": 2,
         "preferred_certifications": []
       },
       {
-        "skill_name": "JavaScript",
+        "skill_name": "Node.js",
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
+        "required_count": 3,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Kubernetes",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Docker",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 3,
         "preferred_certifications": []
       }
     ],
-    "location": "Dariusstad",
+    "location": "Lake Chadburgh",
     "remote_allowed": true
   },
   {
     "id": "RFP-002",
-    "title": "E-commerce Modernization",
-    "client": "Global Finance Corp",
-    "description": "Strategic initiative for Data Analytics Platform.",
+    "title": "API Integration Platform",
+    "client": "Retail Solutions Ltd",
+    "description": "Strategic initiative for Enterprise Web Application.",
     "project_type": "Software Development",
-    "duration_months": 8,
-    "team_size": 6,
-    "budget_range": "$500K - $1M",
-    "start_date": "2026-01-04",
-    "requirements": [
-      {
-        "skill_name": "React",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "AWS",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Docker",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Kubernetes",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Python",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Node.js",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Java",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Angular",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      }
-    ],
-    "location": "Smithfort",
-    "remote_allowed": true
-  },
-  {
-    "id": "RFP-003",
-    "title": "Mobile App Development",
-    "client": "Global Finance Corp",
-    "description": "Strategic initiative for Mobile App Development.",
-    "project_type": "Software Development",
-    "duration_months": 9,
-    "team_size": 3,
-    "budget_range": "$500K - $1M",
-    "start_date": "2026-01-04",
+    "duration_months": 7,
+    "team_size": 8,
+    "budget_range": "$100K - $250K",
+    "start_date": "2026-01-05",
+    "deadline": "2026-08-03",
     "requirements": [
       {
         "skill_name": "Docker",
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Kubernetes",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Python",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Java",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Node.js",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Angular",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      }
-    ],
-    "location": "West Chad",
-    "remote_allowed": true
-  },
-  {
-    "id": "RFP-004",
-    "title": "Data Analytics Platform",
-    "client": "Manufacturing Plus",
-    "description": "Strategic initiative for E-commerce Modernization.",
-    "project_type": "Software Development",
-    "duration_months": 11,
-    "team_size": 7,
-    "budget_range": "$500K - $1M",
-    "start_date": "2026-01-04",
-    "requirements": [
-      {
-        "skill_name": "Angular",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
+        "required_count": 3,
         "preferred_certifications": []
       },
       {
@@ -221,41 +80,7 @@
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "React",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "AWS",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Docker",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Kubernetes",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
-        "preferred_certifications": []
-      },
-      {
-        "skill_name": "Java",
-        "min_proficiency": "Advanced",
-        "preferred_proficiency": "Expert",
-        "is_mandatory": true,
+        "required_count": 1,
         "preferred_certifications": []
       },
       {
@@ -263,10 +88,139 @@
         "min_proficiency": "Advanced",
         "preferred_proficiency": "Expert",
         "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Kubernetes",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Java",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "AWS",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
         "preferred_certifications": []
       }
     ],
-    "location": "Harrisside",
+    "location": "East Teresamouth",
+    "remote_allowed": true
+  },
+  {
+    "id": "RFP-003",
+    "title": "Cloud Migration Project",
+    "client": "Manufacturing Plus",
+    "description": "Strategic initiative for Mobile App Development.",
+    "project_type": "Software Development",
+    "duration_months": 9,
+    "team_size": 11,
+    "budget_range": "$1M - $2M",
+    "start_date": "2026-01-05",
+    "deadline": "2026-10-02",
+    "requirements": [
+      {
+        "skill_name": "AWS",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 3,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "React",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 2,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Java",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 6,
+        "preferred_certifications": []
+      }
+    ],
+    "location": "Lisahaven",
+    "remote_allowed": true
+  },
+  {
+    "id": "RFP-004",
+    "title": "API Integration Platform",
+    "client": "MedTech Industries",
+    "description": "Strategic initiative for Enterprise Web Application.",
+    "project_type": "Software Development",
+    "duration_months": 24,
+    "team_size": 3,
+    "budget_range": "$100K - $250K",
+    "start_date": "2026-01-05",
+    "deadline": "2027-12-26",
+    "requirements": [
+      {
+        "skill_name": "React",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Angular",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "AWS",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Node.js",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Docker",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      },
+      {
+        "skill_name": "Python",
+        "min_proficiency": "Advanced",
+        "preferred_proficiency": "Expert",
+        "is_mandatory": true,
+        "required_count": 1,
+        "preferred_certifications": []
+      }
+    ],
+    "location": "North Maurice",
     "remote_allowed": true
   }
 ]

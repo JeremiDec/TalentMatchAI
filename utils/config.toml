@@ -14,10 +14,10 @@
 num_programmers = 0
 
 # Number of project records to generate
-num_projects = 0
+num_projects = 150
 
 # Number of RFP documents to generate
-num_rfps = 0
+num_rfps = 4
 
 [assignment]
 # Probability that a project gets programmer assignments (0.0 - 1.0)

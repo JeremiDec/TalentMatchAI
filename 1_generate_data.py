@@ -462,8 +462,9 @@ class GraphRAGDataGenerator:
     # ==========================================
 
     def generate_rfps(self, num_rfps: int = 3) -> List[dict]:
-        """Generate realistic RFP data."""
-        if num_rfps <= 0: raise ValueError("Number of RFPs must be positive")
+        """Generate realistic RFP data with counts and deadlines."""
+        if num_rfps <= 0:
+            raise ValueError("Number of RFPs must be positive")
 
         rfp_types = [
             "Enterprise Web Application", "Mobile App Development", "Data Analytics Platform",
@@ -473,21 +474,45 @@ class GraphRAGDataGenerator:
         clients = ["Global Finance Corp", "MedTech Industries", "Retail Solutions Ltd", "Manufacturing Plus"]
         budget_ranges = ["$100K - $250K", "$250K - $500K", "$500K - $1M", "$1M - $2M"]
         
-        # Skill pool for requirements
+        # Skill pool
         skill_names = ["Python", "JavaScript", "Java", "React", "Angular", "Node.js", "AWS", "Docker", "Kubernetes"]
 
         rfps = []
         for i in range(num_rfps):
-            start_date = fake.date_between(start_date='+1m', end_date='+6m')
+            start_date_obj = fake.date_between(start_date='+1m', end_date='+6m')
+            duration_months = random.randint(6, 24)
             
-            # Generate skill requirements with Preferred logic
+            # --- POPRAWKA 1: Obliczanie Deadline ---
+            # Zakładamy miesiąc = 30 dni
+            deadline_obj = start_date_obj + timedelta(days=duration_months * 30)
+            
+            team_size = random.randint(3, 12)
+            
+            # Generate skill requirements with Counts
             requirements = []
-            for skill in random.sample(skill_names, random.randint(4, 8)):
+            # Wybieramy losowe skille
+            selected_skills = random.sample(skill_names, random.randint(3, 6))
+            
+            # --- POPRAWKA 2: Rozdzielanie Team Size na skille ---
+            # Prosta logika: rozdajemy wakaty po skillach
+            slots_left = team_size
+            for idx, skill in enumerate(selected_skills):
+                # Jeśli to ostatni skill, daj mu resztę (chyba że 0)
+                if idx == len(selected_skills) - 1:
+                    count = max(1, slots_left)
+                else:
+                    # Losujemy od 1 do (slots_left - reszta skilli)
+                    max_alloc = max(1, slots_left - (len(selected_skills) - idx - 1))
+                    count = random.randint(1, min(3, max_alloc)) # max 3 per skill żeby było różnorodnie
+                
+                slots_left -= count
+                
                 requirements.append({
                     "skill_name": skill,
                     "min_proficiency": "Advanced",
-                    "preferred_proficiency": "Expert", # Added
+                    "preferred_proficiency": "Expert",
                     "is_mandatory": True,
+                    "required_count": count, # <--- TUTAJ JEST BRAKUJĄCE POLE
                     "preferred_certifications": []
                 })
 
@@ -497,10 +522,11 @@ class GraphRAGDataGenerator:
                 "client": random.choice(clients),
                 "description": f"Strategic initiative for {random.choice(rfp_types)}.",
                 "project_type": "Software Development",
-                "duration_months": random.randint(6, 24),
-                "team_size": random.randint(3, 12),
+                "duration_months": duration_months,
+                "team_size": team_size, 
                 "budget_range": random.choice(budget_ranges),
-                "start_date": start_date.isoformat(),
+                "start_date": start_date_obj.isoformat(),
+                "deadline": deadline_obj.isoformat(), # <--- TUTAJ JEST BRAKUJĄCE POLE
                 "requirements": requirements,
                 "location": fake.city(),
                 "remote_allowed": True
